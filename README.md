@@ -8,7 +8,7 @@ They can:
 - mine gold (add one gold ore to inv)
 - craft 1 box for 12 planks
 - craft 4 planks from 1 log
-- craft 1 coin from 1 gold ore
+- craft 1 coin from 1 gold ore<br>
 One isolate has no inventory and is instead the "server isolate" that stores the inventories.
 ## Protocol
 Tuples, starting with a string, are sent from client to server to request a trade/farm/craft/etc.
