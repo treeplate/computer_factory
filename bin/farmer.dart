@@ -10,6 +10,11 @@ void run(SendPort port) async {
   await manager.init();
   while (true) {
     await manager.farm(Item.cow);
-    log('farmer', 'I now have ${await manager.inv[Item.cow]} cows');
+    await manager.farm(Item.cow);
+    await manager.farm(Item.cow);
+    await manager.trade(1, Item.cow, 3);
+    await manager.farm(Item.sheep);
+    await manager.trade(1, Item.sheep, 1);
+    log('farmer', 'gave three cows + one sheep to #1');
   }
 }

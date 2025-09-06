@@ -43,7 +43,7 @@ Server sends back a tuple starting with a string.
 - (amount)
 <br>In response to client's "getInv"
 ## Behavior
-- 1: farms cows and sheep for #2
-- 2: trades 3 cows 1 sheep to #3 for 1 plank, makes boxes from 12 planks, and sells to #4 for 3 coins
-- 3: chops wood, turns logs into 4 planks, trades 1 plank to #2 for 3 cows 1 sheep
-- 4: mines gold, crafts coins from gold, and buys boxes from #2 for 3 coins
+- 0: farms cows and sheep for #1
+- 1: trades 3 cows 1 sheep to #2 for 1 plank, makes boxes from 12 planks, and sells to #3 for 3 coins
+- 2: chops wood, turns logs into 4 planks, trades 1 plank to #1 for 3 cows 1 sheep
+- 3: mines gold, crafts coins from gold, and buys boxes from #1 for 3 coins

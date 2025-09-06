@@ -1,10 +1,16 @@
-// 1: farms cows and sheep under 2's command
-// 2: decides whether to farm cows or sheep
-// 3: tells 2 what they need given current inventory of 4
-// 4: trades 3 cows 1 sheep for 1 plank
-// 5: makes boxes from 12 planks, and sells for 3 coins
-// us: trades 1 plank for 3 cows 1 sheep
-// also us: trades 3 coins for a box
+// The below comment (minus the frame) is something that makes 
+// no sense to me, being that when it was published on github
+// it was inconsistent with both the README and what the code 
+// does. It is preserved here because why not.
+// |========================================================|
+// | 1: farms cows and sheep under 2's command              |
+// | 2: decides whether to farm cows or sheep               |
+// | 3: tells 2 what they need given current inventory of 4 |
+// | 4: trades 3 cows 1 sheep for 1 plank                   |
+// | 5: makes boxes from 12 planks, and sells for 3 coins   |
+// | us: trades 1 plank for 3 cows 1 sheep                  |
+// | also us: trades 3 coins for a box                      |
+// =========================================================|
 
 import 'srp.dart';
 
