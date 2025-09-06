@@ -1,0 +1,35 @@
+Sep 5, 2025
+I just discovered this project, and am very confused.
+The behaviour appears to be three independent people 
+(farmer,miner,woodcutter), but the README contradicts that.
+It says there are four people:
+- one that farms cows and sheep (current farmer is only cows)
+and gives them to #2,
+- which makes boxes that are sold to #4 
+out of wood traded for cows and sheep from #3,
+- which chops wood and turns that into planks
+- and #4 mines gold to craft coins to buy boxes from #2
+Also, while looking around, I found a comment in manager.dart,
+which says the same thing but #2 is split into #2-#5, 
+and lists #3 and #4 as one person referred to as "us".
+The manager seems to have support for all these features, 
+and it's well documented in the README, 
+but nobody seems to use it?
+I have no idea what's going on here. 
+Did this work before but then I made it simpler? Surely not.
+Did I write this description and then not implement it?
+I doubt that too, because the README and manager.dart disagree
+on the details in a way that would be weird if it was all
+just hypothetical.
+Also, after commiting this to github I made a commit to fix a
+formatting error in the readme, so it would be weird if I
+didn't at least put a note about the "behaviour" section
+just being wrong, which it definitely was because as of that
+commit the README and implementation were definitely inconsistent
+(i.e. only tangentially related)
+Past self, please explain.
+I should probably be going to bed (it's 21:16) but no i'm going
+to spend the next however long implementing this (reimplementing??)
+because I want to see this code do what the readme says it does.
+
+Yours truly, me on Sep 5, 2025.
