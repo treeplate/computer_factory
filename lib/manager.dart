@@ -51,7 +51,7 @@ class Manager {
     return Manager._(people);
   }
 
-  void tick() async {
+  Future<void> tick() async {
     for ((Person, SRPWrapper, int) record in people) {
       int i = record.$3;
       SRPWrapper port = record.$2;
