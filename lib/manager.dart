@@ -1,6 +1,6 @@
-// The below comment (minus the frame) is something that makes 
+// The below comment (minus the frame) is something that makes
 // no sense to me, being that when it was published on github
-// it was inconsistent with both the README and what the code 
+// it was inconsistent with both the README and what the code
 // does. It is preserved here because why not.
 // |========================================================|
 // | 1: farms cows and sheep under 2's command              |
@@ -29,23 +29,31 @@ class Person {
   Person(this.name);
 }
 
-void manage(List<SRPWrapper> managees) async {
-  List<String> names = [];
-  int i = 0;
-  for (SRPWrapper port in managees) {
-    names.add(await port.readItem<String>());
-    i++;
+class Manager {
+  final List<(Person, SRPWrapper, int)> people;
+
+  Manager._(this.people);
+  static Future<Manager> create(List<SRPWrapper> managees) async {
+    List<String> names = [];
+    int i = 0;
+    for (SRPWrapper port in managees) {
+      names.add(await port.readItem<String>());
+      print(i);
+      i++;
+    }
+    i = 0;
+    List<(Person, SRPWrapper, int)> people = [];
+    for (SRPWrapper port in managees) {
+      Person person = Person(names[i]);
+      people.add((person, port, i));
+      i++;
+    }
+    return Manager._(people);
   }
-  i = 0;
-  List<(Person, SRPWrapper, int)> people = [];
-  for (SRPWrapper port in managees) {
-    Person person = Person(names[i]);
-    people.add((person, port, i));
-    i++;
-  }
-  while (true) {
+
+  void tick() async {
     for ((Person, SRPWrapper, int) record in people) {
-      i = record.$3;
+      int i = record.$3;
       SRPWrapper port = record.$2;
       Person person = record.$1;
       Object message = await port.readItem();

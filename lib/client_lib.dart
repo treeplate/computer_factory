@@ -18,7 +18,7 @@ class Inventory {
 
   Inventory(this._port);
 
-  operator [](Item item) async {
+  Future<int> operator [](Item item) async {
     _port.send(('getInv', item.name));
     return await _port.readItem<int>();
   }
@@ -32,6 +32,7 @@ class PersonManager {
     SRPWrapper port = SRPWrapper.fromSendPort(sp, name);
     port.send(name);
     port.send('index');
+    print('$name sent');
     _port = port;
   }
 
