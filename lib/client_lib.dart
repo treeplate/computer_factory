@@ -1,5 +1,3 @@
-import 'dart:isolate';
-
 import 'srp.dart';
 export 'srp.dart' show log;
 

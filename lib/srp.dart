@@ -1,7 +1,30 @@
 import 'dart:async';
-import 'dart:io';
+import 'file_stub.dart' if (dart.library.io) 'dart:io';
 
-import 'dart:isolate';
+class SendPort {
+  final ReceivePort partner;
+
+  void send(Object? object) {
+    for (void Function(dynamic) listener in partner.listeners) {
+      listener(object);
+    }
+    partner.sent.add(object);
+  }
+
+  SendPort(this.partner);
+}
+
+class ReceivePort {
+  final List<void Function(dynamic)> listeners = [];
+  final List<Object?> sent = [];
+  late final SendPort sendPort = SendPort(this);
+  void listen(void Function(dynamic) listener) {
+    listeners.add(listener);
+    for (Object? object in sent) {
+      listener(object);
+    }
+  }
+}
 
 List<String> logs = [];
 void log(String name, String msg) {

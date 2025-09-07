@@ -1,7 +1,7 @@
 /// Chop trees to craft planks.
 library;
 
-import 'dart:isolate';
+import 'srp.dart';
 
 import 'package:computer_factory/client_lib.dart';
 

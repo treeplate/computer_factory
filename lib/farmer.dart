@@ -1,9 +1,9 @@
 /// Farms cows.
 library;
 
-import 'dart:isolate';
-
 import 'package:computer_factory/client_lib.dart';
+
+import 'srp.dart';
 
 void run(SendPort port) async {
   PersonManager manager = PersonManager(port, 'farmer');

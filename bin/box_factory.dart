@@ -1,5 +1,3 @@
-import 'dart:isolate';
-
 import 'package:computer_factory/manager.dart';
 import 'package:computer_factory/srp.dart';
 import 'package:computer_factory/farmer.dart' as farmer;
@@ -15,7 +13,7 @@ void main(List<String> arguments) async {
     (miner.run, 'miner'),
   ].map((e) {
     ReceivePort rp = ReceivePort();
-    Isolate.spawn(e.$1, rp.sendPort);
+    e.$1(rp.sendPort);
     return SRPWrapper(rp, 'manager(${e.$2})');
   }).toList());
   while (true) {

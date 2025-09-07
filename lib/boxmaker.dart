@@ -1,7 +1,7 @@
 /// Makes boxes.
 library;
 
-import 'dart:isolate';
+import 'srp.dart';
 
 import 'package:computer_factory/client_lib.dart';
 

@@ -2,7 +2,6 @@ import 'package:computer_factory/client_lib.dart';
 
 import 'manager.dart';
 import 'package:flutter/material.dart';
-import 'dart:isolate';
 import 'srp.dart';
 import 'farmer.dart' as farmer;
 import 'boxmaker.dart' as boxmaker;
@@ -55,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
       (miner.run, 'miner'),
     ].map((e) {
       ReceivePort rp = ReceivePort();
-      Isolate.spawn(e.$1, rp.sendPort);
+      e.$1(rp.sendPort);
       return SRPWrapper(rp, 'manager(${e.$2})');
     }).followedBy([SRPWrapper(connectionRP, 'manager(user)')]).toList());
     setState(() {
@@ -90,43 +89,43 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
                 CommandWidget(
-                  child: Text('Farm cow'),
+                  child: Text('Farm cow (${manager.people[4].$1.cows} cows)'),
                   onPressed: () => connection.farm(Item.cow),
                   setState: setState,
                   manager: manager,
                 ),
                 CommandWidget(
-                  child: Text('Farm sheep'),
+                  child: Text('Farm sheep (${manager.people[4].$1.sheep} sheep)'),
                   onPressed: () => connection.farm(Item.sheep),
                   setState: setState,
                   manager: manager,
                 ),
                 CommandWidget(
-                  child: Text('Chop wood'),
+                  child: Text('Chop wood (${manager.people[4].$1.logs} logs)'),
                   onPressed: connection.chop,
                   setState: setState,
                   manager: manager,
                 ),
                 CommandWidget(
-                  child: Text('Mine gold'),
+                  child: Text('Mine gold (${manager.people[4].$1.goldOre} gold)'),
                   onPressed: connection.mine,
                   setState: setState,
                   manager: manager,
                 ),
                 CommandWidget(
-                  child: Text('Craft planks (${manager.people[4].$1.logs}/1 log)'),
+                  child: Text('Craft planks (${manager.people[4].$1.logs}/1 log, ${manager.people[4].$1.planks} planks)'),
                   onPressed: manager.people[4].$1.logs>=1?() => connection.craft(Item.planks):null,
                   setState: setState,
                   manager: manager,
                 ),
                 CommandWidget(
-                  child: Text('Craft coin (${manager.people[4].$1.goldOre}/1 gold)'),
+                  child: Text('Craft coin (${manager.people[4].$1.goldOre}/1 gold, ${manager.people[4].$1.coins} coins)'),
                   onPressed: manager.people[4].$1.goldOre>=1?() => connection.craft(Item.coin):null,
                   setState: setState,
                   manager: manager,
                 ),
                 CommandWidget(
-                  child: Text('Craft box (${manager.people[4].$1.planks}/12 planks)'),
+                  child: Text('Craft box (${manager.people[4].$1.planks}/12 planks, ${manager.people[4].$1.boxes} boxes)'),
                   onPressed: manager.people[4].$1.planks>=12?() => connection.craft(Item.box):null,
                   setState: setState,
                   manager: manager,
